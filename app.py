@@ -144,17 +144,21 @@ def pokemons(pokemon):
 
     results4 = session.query(Pokemon.Pokemon)
 
+    results5 = session.query(Pokemon.Sprites)
+
     results3 = session.query(Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,
     Pokemon.Special_Defense, Pokemon.Speed).all()
 
     # results = [hp_results2[0][1], attack_results2[0][1], defense_results2[0][1], special_attack_results2[0][1], 
     # special_defense_results2[0][1], speed_results2[0][1]]
     identifiers = [list(r) for r in results4]
+    sprites = [list(r) for r in results5]
     results = [list(r) for r in results3]
     labels = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]
 
     individual_results = {
         "names": identifiers,
+        "pictures": sprites,
         "labels": labels,
         "scores": results,
     }
