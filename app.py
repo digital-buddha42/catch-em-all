@@ -130,6 +130,39 @@ def apibox(type):
 
     return jsonify(box_results)
 
+@app.route("/api/pokemons/<pokemon>")
+def pokemons(pokemon):
+
+    session = Session(engine)
+
+    # hp_results2 = session.query(Pokemon.Pokemon, Pokemon.HP).all()
+    # attack_results2 = session.query(Pokemon.Pokemon, Pokemon.Attack).all()
+    # defense_results2 = session.query(Pokemon.Pokemon, Pokemon.Defense).all()
+    # special_attack_results2 = session.query(Pokemon.Pokemon, Pokemon.Special_Attack).all()
+    # special_defense_results2 = session.query(Pokemon.Pokemon, Pokemon.Special_Defense).all()
+    # speed_results2 = session.query(Pokemon.Pokemon, Pokemon.Speed).all()
+
+    results4 = session.query(Pokemon.Pokemon)
+
+    results3 = session.query(Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,
+    Pokemon.Special_Defense, Pokemon.Speed).all()
+
+    # results = [hp_results2[0][1], attack_results2[0][1], defense_results2[0][1], special_attack_results2[0][1], 
+    # special_defense_results2[0][1], speed_results2[0][1]]
+    identifiers = [list(r) for r in results4]
+    results = [list(r) for r in results3]
+    labels = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]
+
+    individual_results = {
+        "names": identifiers,
+        "labels": labels,
+        "scores": results,
+    }
+
+    session.close()
+
+    return jsonify(individual_results)
+
 # @app.route("/api/movies")
 # def movie_grid():
 

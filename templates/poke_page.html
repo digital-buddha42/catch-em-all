@@ -60,8 +60,8 @@
     <h2>Data</h2>
     <hr>
 
-    <div class="row" >
-      <div class="col-md-6">
+    <!-- <div class="row" >
+      <div class="col-md-6"> -->
         <!-- <label for="years">Year:</label>
         <br> -->
 
@@ -93,6 +93,24 @@
         </select>        
 
         <div id="v-bar"></div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12"> 
+
+        <label for="years">Pokemon:</label>
+        <br>
+
+        <select name="pokemon" id="pokemon" onchange="optionPokemonChanged(this.value)"">
+          <option value="bulbasaur"">Bulbasaur</option>
+          <!-- <option value="fire">Fire</option>
+          <option value="water">Water</option> -->
+          <!-- <option value="kurosawa">Akira Kurosawa</option> -->
+        </select>        
+
+        <div id="v-bar2"></div>
 
       </div>
     </div>

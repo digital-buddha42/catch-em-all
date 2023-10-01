@@ -81,7 +81,44 @@ function optionTypeChanged(newType) {
   buildBoxChart(newType);
 }
 
+// Charts
+function buildPokemonChart(pokemon) {
+
+  console.log(pokemon);
+
+  d3.json(`/api/pokemons/${pokemon}`).then((data) => {
+
+    console.log(data)
+
+    var trace2 = {
+      type: 'bar',
+      x: data['labels'],
+      y: data['scores'][0],
+      marker: {
+          color: '#C8A2C8',
+      }
+    };
+    
+    var data2 = [ trace2 ];
+    
+    var layout2 = { 
+      title: 'Pokemon',
+    };
+    
+    var config2 = {responsive: true}
+    
+    Plotly.newPlot('v-bar2', data2, layout2, config2 );
+  
+  })
+}
+
+function optionPokemonChanged(newPokemon) {
+  buildPokemonChart(newPokemon);
+}
+
 buildBoxChart("normal")
+
+buildPokemonChart("bulbasaur")
 
 
 // TESTING INIT BELOW
