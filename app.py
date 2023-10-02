@@ -142,9 +142,11 @@ def pokemons(pokemon):
     # special_defense_results2 = session.query(Pokemon.Pokemon, Pokemon.Special_Defense).all()
     # speed_results2 = session.query(Pokemon.Pokemon, Pokemon.Speed).all()
 
-    results4 = session.query(Pokemon.Pokemon)
+    results4 = session.query(Pokemon.Pokemon).all()
 
-    results5 = session.query(Pokemon.Sprites)
+    results5 = session.query(Pokemon.Sprites).all()
+
+    results6 = session.query(Pokemon.Height, Pokemon.Weight, Pokemon.Abilities, Pokemon.Type_1, Pokemon.Type_2)
 
     results3 = session.query(Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,
     Pokemon.Special_Defense, Pokemon.Speed).all()
@@ -153,12 +155,14 @@ def pokemons(pokemon):
     # special_defense_results2[0][1], speed_results2[0][1]]
     identifiers = [list(r) for r in results4]
     sprites = [list(r) for r in results5]
+    info = [list(r) for r in results6]
     results = [list(r) for r in results3]
     labels = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]
 
     individual_results = {
         "names": identifiers,
         "pictures": sprites,
+        "summary_info": info,
         "labels": labels,
         "scores": results,
     }

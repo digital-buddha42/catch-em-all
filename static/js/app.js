@@ -112,6 +112,39 @@ function buildPokemonChart(pokemon) {
   })
 }
 
+// Charts
+function buildPokemonPanel(pokemon) {
+
+  console.log(pokemon);
+
+  d3.json(`/api/pokemons/${pokemon}`).then((data) => {
+
+    console.log(data)
+
+    // Pokemon summary panel
+    summary_info = data.summary_info;
+    // let selectedInfo = summary_info.filter(m => m.id == id);
+
+    let panel = d3.select(".panel panel-primary");
+
+    panel.attr("class", "table table-striped");
+
+    // Use D3 to select the panel body
+    let pbody = d3.select("#sample-metadata");
+
+    // Reset html so I can select new IDs
+    //pbody.html("");
+
+    // Append row `tr` to the panel body for each key value pair
+    let prow = pbody.append("tr");
+
+    for (const [key, value] of Object.entries(summary_info[0])) {
+        prow.append("tr").text(`${key}: ${value}`);
+    }
+  
+  })
+}
+
 function optionPokemonChanged(newPokemon) {
   buildPokemonChart(newPokemon);
 }
@@ -119,6 +152,8 @@ function optionPokemonChanged(newPokemon) {
 buildBoxChart("normal")
 
 buildPokemonChart("bulbasaur")
+
+buildPokemonPanel("bulbasaur")
 
 
 // TESTING INIT BELOW
