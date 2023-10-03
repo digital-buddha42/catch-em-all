@@ -58,6 +58,10 @@ def apistats():
 
     results = [list(r) for r in results]
 
+    #results = [[f'<a href = "/api/pokemons/{r[0]}">{r[0]}</a>', r[1]] for r in results]
+
+    results = [[f'<a href = "/box/{r[0]}">{r[0]}</a>', r[1]] for r in results]
+
     table_results = {
         "table": results
 
@@ -66,6 +70,8 @@ def apistats():
     session.close()
 
     return jsonify(table_results)
+
+    #return render_template("poke_page.html", data = table_results)
 
 # @app.route("/api/box")
 # def apibox():
@@ -128,7 +134,9 @@ def apibox(type):
 
     session.close()
 
-    return jsonify(box_results)
+    #return jsonify(box_results)
+
+    return render_template("poke_page.html", data = box_results)
 
 @app.route("/api/pokemons/<pokemon>")
 def pokemons(pokemon):
@@ -141,30 +149,34 @@ def pokemons(pokemon):
     # special_attack_results2 = session.query(Pokemon.Pokemon, Pokemon.Special_Attack).all()
     # special_defense_results2 = session.query(Pokemon.Pokemon, Pokemon.Special_Defense).all()
     # speed_results2 = session.query(Pokemon.Pokemon, Pokemon.Speed).all()
+    print(pokemon)
+    results4 = session.query(Pokemon.Pokemon, Pokemon.Sprites, Pokemon.Height, Pokemon.Weight, Pokemon.Abilities,\
+    Pokemon.Type_1, Pokemon.Type_2, Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,\
+    Pokemon.Special_Defense, Pokemon.Speed).filter(Pokemon.Pokemon == pokemon).all()
+    print(results4)
 
-    results4 = session.query(Pokemon.Pokemon).all()
+    #results5 = session.query(Pokemon.Sprites).all()
 
-    results5 = session.query(Pokemon.Sprites).all()
+    #results6 = session.query(Pokemon.Height, Pokemon.Weight, Pokemon.Abilities, Pokemon.Type_1, Pokemon.Type_2)
 
-    results6 = session.query(Pokemon.Height, Pokemon.Weight, Pokemon.Abilities, Pokemon.Type_1, Pokemon.Type_2)
-
-    results3 = session.query(Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,
-    Pokemon.Special_Defense, Pokemon.Speed).all()
+    #results3 = session.query(Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,
+    #Pokemon.Special_Defense, Pokemon.Speed).all()
 
     # results = [hp_results2[0][1], attack_results2[0][1], defense_results2[0][1], special_attack_results2[0][1], 
     # special_defense_results2[0][1], speed_results2[0][1]]
-    identifiers = [list(r) for r in results4]
-    sprites = [list(r) for r in results5]
-    info = [list(r) for r in results6]
-    results = [list(r) for r in results3]
+    all_pokemon = [list(r) for r in results4]
+    # sprites = [list(r) for r in results5]
+    # info = [list(r) for r in results6]
+    # results = [list(r) for r in results3]
     labels = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]
 
     individual_results = {
-        "names": identifiers,
-        "pictures": sprites,
-        "summary_info": info,
-        "labels": labels,
-        "scores": results,
+        "data": all_pokemon,
+        "name": all_pokemon[0][0],
+        # "pictures": sprites,
+        # "summary_info": info,
+        # "labels": labels,
+        # "scores": results,
     }
 
     session.close()

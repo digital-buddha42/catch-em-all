@@ -112,7 +112,7 @@ function buildPokemonChart(pokemon) {
   })
 }
 
-// Charts
+// Summary panel
 function buildPokemonPanel(pokemon) {
 
   console.log(pokemon);
