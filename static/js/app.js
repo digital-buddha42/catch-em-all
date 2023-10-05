@@ -112,6 +112,60 @@ function buildPokemonChart(pokemon) {
   })
 }
 
+
+/// Function to update the bar chart
+function updateBarChart(pokemonName, data) {
+  console.log(data)
+ 
+
+  var trace3 = {
+    type: 'bar',
+    x: data['labels'],
+    y: data['scores'][0],
+    marker: {
+        color: '#C8A2C8',
+    }
+  }
+
+  
+  var data3 = [ trace3 ];
+  
+  var layout3 = { 
+    title: 'Pokemon',
+  }
+  
+  var config3 = {responsive: true}
+  
+  Plotly.newPlot('v-bar2', data3, layout3, config3 );
+
+}
+    
+
+// Event listener for dropdown change
+document.getElementById('pokemon-select').addEventListener('change', function () {
+
+  var selectedPokemon = this.value; 
+  console.log(selectedPokemon)
+  // Get the selected Pokémon name
+  // Make an AJAX request to your server to get stats for the selected Pokémon
+  // You will need to implement a route in your Flask app to handle this request
+  // Once you have the stats, call the updateBarChart function
+  // Example:
+  // d3.json('/api/pokemons/' + selectedPokemon)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //         var stats = data.scores;
+  //         updateBarChart(selectedPokemon, stats);
+  //     })
+  //     .catch(error => console.error('Error:', error));
+  d3.json(`/api/pokemons/${selectedPokemon}`).then((data) => {
+    console.log(data)
+    updateBarChart(selectedPokemon, data)
+
+  })
+
+});
+
 // Summary panel
 function buildPokemonPanel(pokemon) {
 
@@ -138,11 +192,10 @@ function buildPokemonPanel(pokemon) {
     // Append row `tr` to the panel body for each key value pair
     let prow = pbody.append("tr");
 
-    for (const [key, value] of Object.entries(summary_info[0])) {
+    data.scores.forEach(([key, value]) => {
         prow.append("tr").text(`${key}: ${value}`);
-    }
-  
   })
+})
 }
 
 function optionPokemonChanged(newPokemon) {
