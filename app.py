@@ -68,7 +68,8 @@ def apistats():
 
     session = Session(engine)
 
-    results = session.query(Pokemon.Pokemon, Pokemon.Abilities).all()
+    results = session.query(Pokemon.Pokemon, Pokemon.Abilities, Pokemon.Type_1, Pokemon.Type_2, Pokemon.Base_Experience,
+                            Pokemon.Height, Pokemon.Weight, Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Speed).all()
 
     results = [list(r) for r in results]
 

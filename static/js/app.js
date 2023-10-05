@@ -9,6 +9,15 @@ d3.json("api/stats").then((data) => {
         columns: [
             { title: "Name" },
             { title: "Abilities" },
+            { title: "Type 1"},
+            { title: "Type 2"},
+            { title : "Base Experience"},
+            { title: "Height"},
+            { title: "Weight"},
+            { title : "HP"},
+            { title : "Attack"},
+            { title : "Defenese"},
+            { title : "Speed"}
            
         ]
     } );
