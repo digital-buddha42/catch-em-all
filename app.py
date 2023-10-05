@@ -41,6 +41,7 @@ def home():
 def stats():
     return render_template("stats.html")
 
+
 @app.route("/box")
 def box():
     # Create a database session
@@ -57,12 +58,11 @@ def box():
 
     return render_template("poke_page.html", pokemon_names=pokemon_names)
 
-# ---------------------------------------------------------
-
-
-
 @app.route("/api/stats")
 def apistats():
+
+
+  
 
     session = Session(engine)
 
@@ -73,6 +73,7 @@ def apistats():
 
     table_results = {
         "table": results
+
     }
 
     session.close()
