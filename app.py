@@ -41,9 +41,6 @@ def home():
 def stats():
     return render_template("stats.html")
 
-# @app.route("/box")
-# def box():
-#     return render_template("poke_page.html")
 @app.route("/box")
 def box():
     # Create a database session
@@ -60,11 +57,12 @@ def box():
 
     return render_template("poke_page.html", pokemon_names=pokemon_names)
 
+# ---------------------------------------------------------
+
+
+
 @app.route("/api/stats")
 def apistats():
-
-
-  
 
     session = Session(engine)
 
@@ -75,7 +73,6 @@ def apistats():
 
     table_results = {
         "table": results
-
     }
 
     session.close()
@@ -150,15 +147,6 @@ def pokemons(pokemon):
 
     return jsonify({"scores": results})
 
-# @app.route("/api/pokemons/<pokemon>")
-# def pokemons(pokemon):
-#     # results6 = session.query(Pokemon.Height, Pokemon.Weight, Pokemon.Abilities, Pokemon.Type_1, Pokemon.Type_2)
-
-#     results3 = session.query(Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,
-#     Pokemon.Special_Defense, Pokemon.Speed).all()
-
-#     # Return the Pokémon stats as JSON
-#     return jsonify({"scores": results3})
 
 
 if __name__ == "__main__":

@@ -24,36 +24,6 @@ d3.json("api/stats").then((data) => {
   
   })
 
-// // Charts
-// function buildBoxChart(data) {
-
-//     console.log(data);
-  
-//     d3.json("api/box").then((data) => {
-
-//       console.log(data)
-  
-//       var trace1 = {
-//         type: 'bar',
-//         x: data['labels'],
-//         y: data['scores'],
-//         marker: {
-//             color: '#C8A2C8',
-//         }
-//       };
-      
-//       var data = [ trace1 ];
-      
-//       var layout = { 
-//         title: 'Box',
-//       };
-      
-//       var config = {responsive: true}
-      
-//       Plotly.newPlot('bar', data, layout, config );
-    
-//     })
-//   }
 
 // Test chart
 function buildBoxChart(type) {
@@ -121,8 +91,7 @@ function buildPokemonChart(pokemon) {
   })
 }
 
-
-/// Function to update the bar chart
+// Function to update the bar chart
 function updateBarChart(pokemonName, data) {
   console.log(data)
  
@@ -136,7 +105,6 @@ function updateBarChart(pokemonName, data) {
     }
   }
 
-  
   var data3 = [ trace3 ];
   
   var layout3 = { 
@@ -159,20 +127,12 @@ document.getElementById('pokemon-select').addEventListener('change', function ()
   // Make an AJAX request to your server to get stats for the selected Pokémon
   // You will need to implement a route in your Flask app to handle this request
   // Once you have the stats, call the updateBarChart function
-  // Example:
-  // d3.json('/api/pokemons/' + selectedPokemon)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //         var stats = data.scores;
-  //         updateBarChart(selectedPokemon, stats);
-  //     })
-  //     .catch(error => console.error('Error:', error));
+
   d3.json(`/api/pokemons/${selectedPokemon}`).then((data) => {
     console.log(data)
     updateBarChart(selectedPokemon, data)
 
   })
-
 });
 
 // Summary panel
@@ -184,28 +144,28 @@ function buildPokemonPanel(pokemon) {
 
     console.log(data)
 
-    // Pokemon summary panel
-    summary_info = data.summary_info;
-    // let selectedInfo = summary_info.filter(m => m.id == id);
+//     // Pokemon summary panel
+//     summary_info = data.summary_info;
+//     // let selectedInfo = summary_info.filter(m => m.id == id);
 
-    let panel = d3.select(".panel panel-primary");
+//     let panel = d3.select(".panel panel-primary");
 
-    panel.attr("class", "table table-striped");
+//     panel.attr("class", "table table-striped");
 
-    // Use D3 to select the panel body
-    let pbody = d3.select("#sample-metadata");
+//     // Use D3 to select the panel body
+//     let pbody = d3.select("#sample-metadata");
 
-    // Reset html so I can select new IDs
-    //pbody.html("");
+//     // Reset html so I can select new IDs
+//     //pbody.html("");
 
-    // Append row `tr` to the panel body for each key value pair
-    let prow = pbody.append("tr");
+//     // Append row `tr` to the panel body for each key value pair
+//     let prow = pbody.append("tr");
 
-    data.scores.forEach(([key, value]) => {
-        prow.append("tr").text(`${key}: ${value}`);
-  })
-})
-}
+//     data.scores.forEach(([key, value]) => {
+//         prow.append("tr").text(`${key}: ${value}`);
+//   })
+// })
+// }
 
 function optionPokemonChanged(newPokemon) {
   buildPokemonChart(newPokemon);
@@ -216,36 +176,3 @@ buildBoxChart("normal")
 buildPokemonChart("bulbasaur")
 
 buildPokemonPanel("bulbasaur")
-
-
-// TESTING INIT BELOW
-// function init() {
-
-// d3.json("api/box").then(function(data) {
-
-//     console.log(data);
-    
-//     // Fill the dropdown menu with all the IDs
-//     let dropdownMenu = d3.select("#selDataset");
-
-//     console.log(data.ID);
-
-//     let ids = data.ID;
-
-//     for (let i=0; i<ids.length; i++) {
-
-//         dropdownMenu.append("option").text(ids[i]).property("value", ids[i]);
-
-//     }
-
-//     first = ids[0];
-
-//     // Display the charts and panel with the first ID
-
-//     buildBoxChart(first);
-
-// });
-
-// }
-
-// init()
