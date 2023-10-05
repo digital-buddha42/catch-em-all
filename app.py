@@ -41,10 +41,21 @@ def home():
 def stats():
     return render_template("stats.html")
 
-@app.route("/box")
+# @app.route("/box")
 def box():
-    return render_template("poke_page.html")
+    # Create a database session
+    session = Session(engine)
 
+    # Query the database to get a list of Pokémon names
+    pokemon_names = session.query(Pokemon.Pokemon).all()
+
+    # Close the database session
+    session.close()
+
+    # Extract the names from the query results
+    pokemon_names = [pokemon.Pokemon for pokemon in pokemon_names]
+
+    return render_template("poke_page.html", pokemon_names=pokemon_names)
 
 @app.route("/api/stats")
 def apistats():

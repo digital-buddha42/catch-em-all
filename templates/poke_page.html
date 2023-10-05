@@ -108,13 +108,20 @@
         <label for="years">Pokemon:</label>
         <br>
 
-        <select name="pokemon" id="pokemon" onchange="optionPokemonChanged(this.value)"">
+        <!-- <select name="pokemon" id="pokemon" onchange="optionPokemonChanged(this.value)"">
           <option value="bulbasaur"">Bulbasaur</option>
           <option value="ivysaur"">Ivysaur</option>
           <!-- <option value="fire">Fire</option>
           <option value="water">Water</option> -->
           <!-- <option value="kurosawa">Akira Kurosawa</option> -->
-        </select>        
+        <!-- </select>         --> -->
+        
+        <label for="pokemon-select">Select a Pokémon:</label>
+        <select id="pokemon-select">
+            {% for name in pokemon_names %}
+                <option>{{ name }}</option>
+            {% endfor %}
+        </select>    
 
         <div id="v-bar2"></div>
 
