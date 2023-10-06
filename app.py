@@ -87,12 +87,43 @@ def apibox(type):
 
     print(type)
 
+    
     if type == "normal":
         name = "normal"
     elif type == "fire":
         name = "fire"
-    else:
+    elif type == "water":
         name = "water"
+    elif type == "grass":
+        name = "grass"
+    elif type == "electric":
+        name = "electric"
+    elif type == "ice":
+        name = "ice"
+    elif type == "fighting":
+        name = "fighting"
+    elif type == "poison":
+        name = "poison"
+    elif type == "ground":
+        name = "ground"
+    elif type == "flying":
+        name = "flying"
+    elif type == "psychic":
+        name = "psychic"
+    elif type == "bug":
+        name = "bug"
+    elif type == "rock":
+        name = "rock"
+    elif type == "ghost":
+        name = "ghost"
+    elif type == "dragon":
+        name = "dragon"
+    elif type == "dark":
+        name = "dark"
+    elif type == "steel":
+        name = "steel"
+    else:
+        name = "fairy"
 
     session = Session(engine)
 

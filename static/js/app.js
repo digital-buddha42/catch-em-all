@@ -47,7 +47,7 @@ function buildBoxChart(type) {
     var data = [ trace1 ];
     
     var layout = { 
-      title: 'Boxes',
+      title: 'Average Stats by Type',
     };
     
     var config = {responsive: true}
