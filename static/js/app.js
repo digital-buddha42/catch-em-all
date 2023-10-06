@@ -82,7 +82,7 @@ function buildPokemonChart(pokemon) {
     var data2 = [ trace2 ];
     
     var layout2 = { 
-      title: 'Pokemon',
+      title: data['names'],
     };
     
     var config2 = {responsive: true}
@@ -125,9 +125,11 @@ function updateBarChart(pokemonName, data) {
 
   
   var data3 = [ trace3 ];
+
+  
   
   var layout3 = { 
-    title: 'Pokemon',
+    title: data['names'],
   }
   
   var config3 = {responsive: true}
@@ -161,36 +163,36 @@ document.getElementById('pokemon-select').addEventListener('change', function ()
 });
 
 // Summary panel
-function buildPokemonPanel(pokemon) {
+// function buildPokemonPanel(pokemon) {
 
-  console.log(pokemon);
+//   console.log(pokemon);
 
-  d3.json(`/api/pokemons/${pokemon}`).then((data) => {
+//   d3.json(`/api/pokemons/${pokemon}`).then((data) => {
 
-    console.log(data)
+//     console.log(data)
 
-    // Pokemon summary panel
-    summary_info = data.summary_info;
-    // let selectedInfo = summary_info.filter(m => m.id == id);
+//     // Pokemon summary panel
+//     summary_info = data.summary_info;
+//     // let selectedInfo = summary_info.filter(m => m.id == id);
 
-    let panel = d3.select(".panel panel-primary");
+//     let panel = d3.select(".panel panel-primary");
 
-    panel.attr("class", "table table-striped");
+//     panel.attr("class", "table table-striped");
 
-    // Use D3 to select the panel body
-    let pbody = d3.select("#sample-metadata");
+//     // Use D3 to select the panel body
+//     let pbody = d3.select("#sample-metadata");
 
-    // Reset html so I can select new IDs
-    //pbody.html("");
+//     // Reset html so I can select new IDs
+//     //pbody.html("");
 
-    // Append row `tr` to the panel body for each key value pair
-    let prow = pbody.append("tr");
+//     // Append row `tr` to the panel body for each key value pair
+//     let prow = pbody.append("tr");
 
-    data.scores.forEach(([key, value]) => {
-        prow.append("tr").text(`${key}: ${value}`);
-  })
-})
-}
+//     data.scores.forEach(([key, value]) => {
+//         prow.append("tr").text(`${key}: ${value}`);
+//   })
+// })
+// }
 
 function optionPokemonChanged(newPokemon) {
   buildPokemonChart(newPokemon);
@@ -200,4 +202,4 @@ buildBoxChart("normal")
 
 buildPokemonChart("bulbasaur")
 
-buildPokemonPanel("bulbasaur")
+// buildPokemonPanel("bulbasaur")

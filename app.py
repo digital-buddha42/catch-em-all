@@ -122,7 +122,7 @@ def pokemons(pokemon):
     session = Session(engine)
 
   
-    results4 = session.query(Pokemon.Pokemon).all()
+    results4 = session.query(Pokemon.Pokemon).filter(Pokemon.Pokemon == pokemon).all()
 
     results5 = session.query(Pokemon.Sprites).filter(Pokemon.Pokemon == pokemon).all()
 
@@ -147,7 +147,9 @@ def pokemons(pokemon):
     session.close()
 
     return jsonify({"scores": results,
-                    "pictures": sprites
+                    "pictures": sprites,
+                    "labels" : labels,
+                    "names": pokemon
     })
 
 
