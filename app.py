@@ -124,7 +124,7 @@ def pokemons(pokemon):
   
     results4 = session.query(Pokemon.Pokemon).all()
 
-    results5 = session.query(Pokemon.Sprites).all()
+    results5 = session.query(Pokemon.Sprites).filter(Pokemon.Pokemon == pokemon).all()
 
     results6 = session.query(Pokemon.Height, Pokemon.Weight, Pokemon.Abilities, Pokemon.Type_1, Pokemon.Type_2)
 
@@ -146,7 +146,9 @@ def pokemons(pokemon):
 
     session.close()
 
-    return jsonify({"scores": results})
+    return jsonify({"scores": results,
+                    "pictures": sprites
+    })
 
 
 

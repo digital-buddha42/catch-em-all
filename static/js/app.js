@@ -86,8 +86,24 @@ function buildPokemonChart(pokemon) {
     };
     
     var config2 = {responsive: true}
+
+    console.log(data['pictures'][0][0])
+
+    var pokeimage = data['pictures'][0][0]
+    document.getElementById('pokeimage').src=pokeimage
+
+  //   img = go.Image(
+  //     filename= pokeimage,
+  //     width=400,
+  //     height=400,
+  // )
+  // // # Create a figure
+  //   fig = go.Figure(data=[img])
+  // // # Show the figure
+  //   fig.show()
     
     Plotly.newPlot('v-bar2', data2, layout2, config2 );
+    Plotly.newPlot('pokeimage', pokeimage)
   
   })
 }
@@ -117,6 +133,11 @@ function updateBarChart(pokemonName, data) {
   var config3 = {responsive: true}
   
   Plotly.newPlot('v-bar2', data3, layout3, config3 );
+
+  var pokeimage = data['pictures'][0][0]
+    document.getElementById('pokeimage').src=pokeimage
+
+  Plotly.newPlot('pokeimage', pokeimage)
 
 }
     
