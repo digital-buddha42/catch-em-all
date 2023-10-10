@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Poke Page</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+
+<body>
+  <div class="container-fluid custom-bg">
+    <nav class="navbar navbar-expand-lg custom-navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Pokemon</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/stats">Stats</a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/box">Poke Page</a>
+            </li>
+      
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <div class="container-fluid custom-bg">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="stat-header col-md-2">Poke Page</h1>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12"> 
+          <label for="years" class="type-header">View Stats by Type:</label>
+          <br>
+
+          <select name="type" id="type" class="custom-text" onchange="optionTypeChanged(this.value)">
+            <option value="normal">Normal</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="electric">Electric</option>
+            <option value="ice">Ice</option>
+            <option value="fighting">Fighting</option>
+            <option value="poison">Poison</option>
+            <option value="ground">Ground</option>
+            <option value="flying">Flying</option>
+            <option value="psychic">Psychic</option>
+            <option value="bug">Bug</option>
+            <option value="rock">Rock</option>
+            <option value="ghost">Ghost</option>
+            <option value="dragon">Dragon</option>
+            <option value="dark">Dark</option>
+            <option value="steel">Steel</option>
+            <option value="fairy">Fairy</option>
+          </select>
+          <div id="v-bar" class="custom-chart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid custom-bg">
+    <div class="row">
+      <div class="col-md-12">  
+        <label for="pokemon-select" class="type-header">View Stats by Pokémon:</label>
+        <br>
+        <select id="pokemon-select" class="custom-text">
+          {% for name in pokemon_names %}
+            <option>{{ name }}</option>
+          {% endfor %}
+        </select>
+        <div class="float-container">
+          <div class="float-child">
+            <img id = "pokeimage" src="">
+          </div>    
+          <div id="v-bar2" class="custom-chart2 float-child">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <a class="navbar custom-link" href="#top">Back to top of page</a>
+    </div>
+  </div>
+  
+  
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <script src="https:////cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+  <!-- Adding this one below to test -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  </body>
+  
+  </html>
+  
