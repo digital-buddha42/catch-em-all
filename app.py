@@ -14,7 +14,7 @@ from flask import (
     request,
     redirect)
 
-engine = create_engine("sqlite:///data/pokemon.sqlite")
+engine = create_engine("sqlite:///pokemon.sqlite")
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -67,7 +67,8 @@ def apistats():
     session = Session(engine)
 
     results = session.query(Pokemon.Pokemon, Pokemon.Abilities, Pokemon.Type_1, Pokemon.Type_2, Pokemon.Base_Experience,
-                            Pokemon.Height, Pokemon.Weight, Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Speed).all()
+                            Pokemon.Height, Pokemon.Weight, Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Speed, 
+                            Pokemon.Base_Pokemon).all()
 
     results = [list(r) for r in results]
 
@@ -153,7 +154,7 @@ def pokemons(pokemon):
     session = Session(engine)
 
   
-    results4 = session.query(Pokemon.Pokemon).filter(Pokemon.Pokemon == pokemon).all()
+    # results4 = session.query(Pokemon.Base_Pokemon).filter(Pokemon.Pokemon == pokemon).all()
 
     results5 = session.query(Pokemon.Sprites).filter(Pokemon.Pokemon == pokemon).all()
 
