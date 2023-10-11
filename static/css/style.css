@@ -122,3 +122,13 @@
   margin-left: auto;
   margin-right: auto;
 }  
+
+P.blocktext {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  color: #4d61a0; 
+  border: 1px solid #b0c2ff1f;
+  border-radius: 10px;
+  text-align: center;
+}
