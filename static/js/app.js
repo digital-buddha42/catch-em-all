@@ -17,7 +17,10 @@ d3.json("api/stats").then((data) => {
             { title : "HP"},
             { title : "Attack"},
             { title : "Defense"},
-            { title : "Speed"}
+            { title : "Speed"},
+            { title : "Base Pokemon"},
+            { title : "Evolution Level 1"},
+            { title : "Evolution Level 2"}
            
         ]
     } );
