@@ -16,8 +16,9 @@ d3.json("api/stats").then((data) => {
             { title: "Weight"},
             { title : "HP"},
             { title : "Attack"},
-            { title : "Defenese"},
-            { title : "Speed"}
+            { title : "Defense"},
+            { title : "Speed"},
+            { title : "Base Pokemon"}
            
         ]
     } );
