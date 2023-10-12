@@ -90,44 +90,45 @@ def apibox(type):
 
     
     if type == "normal":
-        name = "normal"
+        name = "Normal"
     elif type == "fire":
-        name = "fire"
+        name = "Fire"
     elif type == "water":
-        name = "water"
+        name = "Water"
     elif type == "grass":
-        name = "grass"
-    elif type == "electric":
-        name = "electric"
+        name = "Grass"
+    elif type == "Electric":
+        name = "Electric"
     elif type == "ice":
-        name = "ice"
+        name = "Ice"
     elif type == "fighting":
-        name = "fighting"
+        name = "Fighting"
     elif type == "poison":
-        name = "poison"
+        name = "Poison"
     elif type == "ground":
-        name = "ground"
+        name = "Ground"
     elif type == "flying":
-        name = "flying"
+        name = "Flying"
     elif type == "psychic":
-        name = "psychic"
+        name = "Psychic"
     elif type == "bug":
-        name = "bug"
+        name = "Bug"
     elif type == "rock":
-        name = "rock"
+        name = "Rock"
     elif type == "ghost":
-        name = "ghost"
+        name = "Ghost"
     elif type == "dragon":
-        name = "dragon"
+        name = "Dragon"
     elif type == "dark":
-        name = "dark"
+        name = "Dark"
     elif type == "steel":
-        name = "steel"
+        name = "Steel"
     else:
-        name = "fairy"
+        name = "Fairy"
 
     session = Session(engine)
 
+    print(name)
     hp_results = session.query(func.avg(Pokemon.HP)).filter(Pokemon.Type_1 == name).all()
     attack_results = session.query(func.avg(Pokemon.Attack)).filter(Pokemon.Type_1 == name).all()
     defense_results = session.query(func.avg(Pokemon.Defense)).filter(Pokemon.Type_1 == name).all()
@@ -135,6 +136,7 @@ def apibox(type):
     special_defense_results = session.query(func.avg(Pokemon.Special_Defense)).filter(Pokemon.Type_1 == name).all()
     speed_results = session.query(func.avg(Pokemon.Speed)).filter(Pokemon.Type_1 == name).all()
 
+    print(hp_results)
     results = [hp_results[0][0], attack_results[0][0], defense_results[0][0], special_attack_results[0][0], 
     special_defense_results[0][0], speed_results[0][0]]
     labels = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]
@@ -163,6 +165,7 @@ def pokemons(pokemon):
     results3 = session.query(Pokemon.HP, Pokemon.Attack, Pokemon.Defense, Pokemon.Special_Attack,
     Pokemon.Special_Defense, Pokemon.Speed).filter(Pokemon.Pokemon == pokemon).all()
 
+    print(results5)
     sprites = [list(r) for r in results5]
     info = [list(r) for r in results6]
     results = [list(r) for r in results3]

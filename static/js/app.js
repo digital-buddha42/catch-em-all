@@ -203,6 +203,6 @@ function optionPokemonChanged(newPokemon) {
 
 buildBoxChart("normal")
 
-buildPokemonChart("bulbasaur")
+buildPokemonChart("Bulbasaur")
 
 // buildPokemonPanel("bulbasaur")
